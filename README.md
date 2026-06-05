@@ -1,66 +1,75 @@
-## Foundry
+# Crowdfunding Smart Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Overview
 
-Foundry consists of:
+This project is a decentralized crowdfunding platform built with Solidity and Foundry.
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+Users can create fundraising campaigns, contribute ETH to campaigns, withdraw funds when funding goals are achieved, and receive refunds if campaigns fail to meet their goals before the deadline.
 
-## Documentation
+## Features
 
-https://book.getfoundry.sh/
+* Create crowdfunding campaigns
+* Set funding goals
+* Set campaign duration
+* Contribute ETH to campaigns
+* Withdraw funds after successful funding
+* Refund contributors when funding goals are not met
+* Event logging for all major actions
 
-## Usage
+## Smart Contract Functions
 
-### Build
+### createCampaign()
 
-```shell
-$ forge build
-```
+Creates a new crowdfunding campaign.
 
-### Test
+### contribute()
 
-```shell
-$ forge test
-```
+Allows users to contribute ETH to a campaign.
 
-### Format
+### withdrawFunds()
 
-```shell
-$ forge fmt
-```
+Allows campaign creators to withdraw funds after the funding goal has been reached.
 
-### Gas Snapshots
+### refund()
 
-```shell
-$ forge snapshot
-```
+Allows contributors to reclaim their funds if the campaign fails.
 
-### Anvil
+## Events
 
-```shell
-$ anvil
-```
+* CampaignCreated
+* ContributionMade
+* FundsWithdrawn
+* RefundIssued
 
-### Deploy
+## Testing
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+Run all tests:
 
-### Cast
+forge test -vv
 
-```shell
-$ cast <subcommand>
-```
+Current test coverage:
 
-### Help
+* Campaign Creation
+* Contribution
+* Withdrawal
+* Refund
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## Deployment
+
+Start a local blockchain:
+
+anvil
+
+Deploy contract:
+
+forge script script/DeployCrowdfunding.s.sol:DeployCrowdfunding --rpc-url http://127.0.0.1:8545 --broadcast --private-key <PRIVATE_KEY>
+
+## Technologies Used
+
+* Solidity
+* Foundry
+* Anvil
+
+## Author
+
+Group Crowdfunding Project
