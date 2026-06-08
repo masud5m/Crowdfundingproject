@@ -1,8 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
+ import "./RewardToken.sol";
+
 
 contract Crowdfunding {
-
+  constructor() {
+    rewardToken = new RewardToken();
+}
     struct Campaign {
         address creator;
         string title;
@@ -11,7 +15,7 @@ contract Crowdfunding {
         uint256 amountRaised;
         bool withdrawn;
     }
-
+   RewardToken public rewardToken;
     uint256 public campaignCount;
 
     mapping(uint256 => Campaign) public campaigns;
@@ -86,6 +90,7 @@ contract Crowdfunding {
     campaign.amountRaised += msg.value;
 
     contributions[_campaignId][msg.sender] += msg.value;
+    rewardToken.mint(msg.sender, msg.value * 100);
 
     emit ContributionMade(
         _campaignId,
