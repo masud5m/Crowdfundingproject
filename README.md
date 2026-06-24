@@ -94,6 +94,7 @@ forge script script/DeployCrowdfunding.s.sol:DeployCrowdfunding --rpc-url http:/
 * Foundry
 * Anvil
 
-## Author
 
-Group Crowdfunding Project
+## Contributors
+
+Built as a collaborative blockchain development project using Solidity and Foundry.
